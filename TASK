@@ -1,0 +1,22 @@
+This project contains several components.  It contains an emulator for a Data Generate 32-Bit Eagle computer and
+and an emulator for a minimal set of AOS/VS operating system calls.  The operating system calls are mapped to
+Windows/C++ calls.  The emulators are written in Java and can be found in the Source directory.
+
+The project also includes a game called QUEST.  Quest consists of two processes that must be running simultaneous
+on the emulation.  QUEST and QUEST_SERVER.  They communicate through shared memory that is mapped into each process.
+The binary program can be found in the QUEST folder: QUEST.PR and QUEST_SERVER.PR.  The associated symbol tables for
+the two programs are QUEST.ST and QUEST_SERVER.SR.
+
+The project has a simple disassembler and symbol table dumper.  Quest has been disassembled into quest.dis and the
+symbols have been dumped into quest.symbols, likewise for quest_server.
+
+The original Quest program was probably written in either F77 or PL/I and compiled to the .PR files.  The original 
+source code for Quest and Quest_Server has been lost.  Your project is to try to reverse engineer the .PR file 
+back to some source code that could be compiled.  
+
+Some useful information.  Within the Source folder, you'll find hw which is the instruction set emulation.  You'll
+also find os which contains the emulation of the operating system.  Debug has tools for loading and dumping information
+about the programs.  The Docs folders contains documentation about AOS/VS system calls and the instruction set.
+
+Do you have questions that I can answer?  Can you write a plan for how you would tackle this project?
+
