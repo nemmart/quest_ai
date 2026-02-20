@@ -37,7 +37,7 @@ These files where generated using the java programs:
 
   java -cp quest.jar debug.SymbolTable quest/quest_server.st >quest_server.symbols
   java -cp quest.jar StartStop quest quest_server "SQR31?3" "?UKIL" "SQR31?3" >quest_server.addrs  
-  java -cp quest.jar Disassemble quest quest_server quest.addrs >quest_server.compact
+  java -cp quest.jar Disassemble quest quest_server quest_server.addrs >quest_server.compact
   
   These output files: quest.symbols, quest.addrs, quest.compact 
                       quest_server.symbols, quest_server.addrs, quest_symbols.compact

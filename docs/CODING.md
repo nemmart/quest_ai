@@ -15,6 +15,7 @@ readable C++ that is **binary-compatible** with the original data files
 ## File Organization
 
 ```
+CODING.md              — this file
 quest_artifacts/
   src/
     FUNCTION_NAME.hpp    — declaration
@@ -24,7 +25,6 @@ quest_artifacts/
       control_flow.md    — basic block diagram, branch logic
       stack_layout.md    — original MV-32 frame layout, variable mapping
       notes.md           — observations, open questions
-  CODING.md              — this file
 ```
 
 - One `.hpp` / `.cpp` pair per original PL/I procedure.
@@ -37,7 +37,7 @@ quest_artifacts/
 
 - **Indentation:** 2 spaces. No tabs.
 - **Braces:** K&R style (opening brace on same line).
-- **Line length:** soft limit 100 columns.
+- **Line length:** long lines are preferred
 - **Naming:**
   - Original routine names preserved as comments: `// MV-32: ALLY_PLAYER @ 0x7015D053`
   - C++ function names: `snake_case` (e.g., `ally_player`, `get_input`)
