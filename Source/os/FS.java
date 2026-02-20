@@ -66,7 +66,7 @@ public class FS implements Runnable {
       FS.load(loadPath, ":" + file.getName());
 
      for(String name : files.keySet())
-      System.out.println(name);
+      System.err.println(name);
     }
     Runtime.getRuntime().addShutdownHook(new Thread(new FS()));
    }
