@@ -24,9 +24,9 @@ public class Disassemble {
        if(symbols.addressToName.get(current)!=null) {
         if(current!=start)
           System.out.println();
-        System.out.println("# ----------------------------------------------------------------\n");
-        System.out.println("# %s\n" + symbols.addressToName.get(current));
-        System.out.println("# ----------------------------------------------------------------\n");
+        System.out.printf("# ----------------------------------------------------------------\n");
+        System.out.printf("# %s\n", symbols.addressToName.get(current));
+        System.out.printf("# ----------------------------------------------------------------\n");
        }
        base=current;
        while(current==base || (current<stop && symbols.addressToName.get(current)==null))
