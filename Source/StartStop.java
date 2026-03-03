@@ -52,7 +52,7 @@ public class StartStop {
     return -1;
    }
 
-   static public TreeSet reachable(SymbolTable symbols, Memory memory, int start, int stop) {
+   static public TreeSet<Integer> reachable(SymbolTable symbols, Memory memory, int start, int stop) {
     TreeSet<Integer> results=new TreeSet<Integer>();
     Set<Integer>     process=new HashSet<Integer>();
     Set<Integer>     additional=new HashSet<Integer>();

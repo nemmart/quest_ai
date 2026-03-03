@@ -105,6 +105,19 @@ public class OSContextShared extends OSContext {
        readOnly=true;
        System.out.println("   Channel is read only!");
       }
+
+      // If this file is being mapped for shared writable access,
+      // switch it from array-backed to memory-mapped.  This way
+      // writes go directly to disk via the OS page cache.
+      // Files opened for streamed I/O (like USER_DATA_FILE) never
+      // reach this code path, so they stay array-backed and can
+      // still be resized.
+      if(!readOnly) {
+       FSFile fsFile=channel.getFile();
+       if(fsFile!=null)
+        fsFile.enableMemoryMapping();
+      }
+
       process.mapFile(channel, memoryPageNumber, channel.pageCount()-diskPageNumber, diskPageNumber, true, !readOnly, false);
      }
     }

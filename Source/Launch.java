@@ -21,9 +21,10 @@ public class Launch {
     }
    }
 
+/*
    static public Launchable construct(String name) {
     try {
-     Object launchable=Class.forName(name).newInstance();
+     Object launchable=Class.forName(name).getDeclaredConstructor().newInstance();
 
      if(launchable instanceof Launchable)
       return (Launchable)launchable;
@@ -33,6 +34,7 @@ public class Launch {
      return null;
     }
    }
+*/
 
    static public void main(String[] args) {
     FSStreamIO stream;
@@ -72,14 +74,14 @@ public class Launch {
       type=1;
       args[index]=args[index].substring(0, args[index].length()-3);
      }
-     else if(args[index].toUpperCase().endsWith(".CLASS")) {
-      type=2;
-      args[index]=args[index].substring(0, args[index].length()-6);
-     }
+//     else if(args[index].toUpperCase().endsWith(".CLASS")) {
+//      type=2;
+//      args[index]=args[index].substring(0, args[index].length()-6);
+//     }
      else if(FS.retrieve(":" + args[index].toUpperCase() + ".PR")!=null)
       type=1;
-     else if(construct(args[index])!=null)
-      type=2;
+//     else if(construct(args[index])!=null)
+//      type=2;
 
      if(type==0)
       System.out.println("Launch target " + args[index] + " not found");
@@ -87,8 +89,6 @@ public class Launch {
       process=null;
       if(type==1)
        process=new OSProcess(":", args[index].toUpperCase());
-      else if(type==2)
-       process=construct(args[index]);
       process.launch(stream);
      }
     }

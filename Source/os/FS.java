@@ -177,6 +177,9 @@ public class FS implements Runnable {
     }
    }
 
+   // MODIFIED: handles both memory-mapped and array-based files.
+   // For mapped files: force the buffer to disk, then close the channel.
+   // For array-based files: write out as before (fallback path).
    static public void shutdown() {
     Iterator<String> iterator=files.keySet().iterator();
     String           path;
@@ -188,7 +191,12 @@ public class FS implements Runnable {
      if(object instanceof FSFile) {
       FSFile file=(FSFile)object;
 
-      if(file.modified) {
+      if(file.isMemoryMapped()) {
+       System.err.println("Flushing mapped file: " + path);
+       file.force();
+       file.closeMapped();
+      }
+      else if(file.modified) {
        System.err.println("Writing: " + path);
        file.storePages(null);
       }

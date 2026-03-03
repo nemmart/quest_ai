@@ -457,8 +457,7 @@ public class Decoder {
 
    static public Instruction instantiate(String className) {
     try {
-     Class  instructionClass=Class.forName("hw." + className);
-     Object instance=instructionClass.newInstance();
+     Object instance=Class.forName("hw." + className).getDeclaredConstructor().newInstance();
 
      if(!(instance instanceof Instruction))
       throw new RuntimeException("Class '" + className + "' must be a subclass of Instruction");
